@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/index")
@@ -23,9 +21,10 @@ public class IndexController {
 	@RequestMapping("/test")
 	public String index(HttpServletRequest request){
 
-		String sql = "select * from test where id = ?";
+		log.info("线程名称："+Thread.currentThread().getName());
 
-		List<Map<String, Object>> mapList = jdbcTemplate.queryForList(sql,1);
+//		String sql = "select * from test where id = ?";
+//		List<Map<String, Object>> mapList = jdbcTemplate.queryForList(sql,1);
 
 		return "index";
 	}

@@ -1,5 +1,6 @@
 package com.druid.monitor.druid;
 
+import cn.hutool.db.sql.SqlFormatter;
 import com.alibaba.druid.filter.FilterChain;
 import com.alibaba.druid.filter.FilterEventAdapter;
 import com.alibaba.druid.proxy.jdbc.PreparedStatementProxy;
@@ -49,6 +50,7 @@ public class FilterEvent extends FilterEventAdapter {
 		String tableName = HelpMe.extractTableNameFromSql(statement.getSql());
 
 		log.info("tableName:{}",tableName);
+		log.info("sql:{}",SqlFormatter.format(statement.getSql()));
 
 		return result;
 	}
